@@ -1,11 +1,24 @@
+import os.path
+import ntpath
+import sys
+
+def path_leaf(path):
+    head, tail = ntpath.split(path)
+    return tail or ntpath.basename(head)
+
+def resource_location(dev_location):
+    if hasattr(sys, "_MEIPASS"):
+        return os.path.join(sys._MEIPASS, path_leaf(dev_location))
+    return dev_location
+
 class Registry:
-    SEGMENT_MENU_QSS = "./src/components/segments/segment-menu.qss"
-    TAG_MENU_QSS = "./src/components/tags/tag-menu.qss"
-    VIDEO_AREA_QSS = "./src/components/video/video-area.qss"
-    CONTROLS_QSS = "./src/components/video/controls.qss"
-    TAG_LIST_ITEM_QSS = "./src/components/tags/tag-list-item.qss"
-    SEGMENT_LIST_ITEM_QSS = "./src/components/segments/segment-list-item.qss"
-    OPEN_IMAGE = "./src/registry/open.png"
+    SEGMENT_MENU_QSS = resource_location("./src/components/segments/segment-menu.qss")
+    TAG_MENU_QSS = resource_location("./src/components/tags/tag-menu.qss")
+    VIDEO_AREA_QSS = resource_location("./src/components/video/video-area.qss")
+    CONTROLS_QSS = resource_location("./src/components/video/controls.qss")
+    TAG_LIST_ITEM_QSS = resource_location("./src/components/tags/tag-list-item.qss")
+    SEGMENT_LIST_ITEM_QSS = resource_location("./src/components/segments/segment-list-item.qss")
+    OPEN_IMAGE = resource_location("./src/registry/open.png")
 
     OPEN_VIDEO_DIALOG_TITLE = "Open Video"
     OPEN_VIDEO_DIALOG_FILE_TYPES = "Video Files (*.mp4 *.mkv *.avi *.ts)"
