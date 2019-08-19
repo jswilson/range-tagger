@@ -1,0 +1,27 @@
+SegmentListItem {
+  width: 100%;
+  background-color: #212121;
+  border-bottom: 1px solid #2d2d2d;
+  padding-left: 10px;
+}
+
+QFrame:hover {
+  background-color: black;
+}
+
+PressableLabel {
+  background-color: #212121;  
+  color: white;
+}
+
+.selected {
+  background-color: #7d7d7d;
+}
+
+.selected:hover {
+  background-color: #4d4d4d;
+}
+
+.selected:pressed {
+  background-color: #4d4d4d;
+}

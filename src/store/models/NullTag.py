@@ -1,0 +1,2 @@
+class NullTag:
+    pass

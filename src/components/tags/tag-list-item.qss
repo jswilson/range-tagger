@@ -1,0 +1,15 @@
+TagListItem {
+  background-color: #212121;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  border-bottom: 1px solid #2d2d2d;
+  padding-left: 15px;
+}
+
+QCheckBox {
+  color: #eeeeee;
+  font-weight: bold;
+  spacing: 10px;
+  margin: 0;
+}
