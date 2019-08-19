@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import (QMenuBar, QAction)
+from PyQt5.QtWidgets import (QMenuBar, QAction, QFileDialog)
 
 from .commands import AddTagToSegmentCommand
 from .commands import AddSegmentCommand
@@ -59,8 +59,10 @@ class MenuBar(QMenuBar):
     def _on_video_load(self):
         if not self.store.video_filename:
             self.create_segment.setEnabled(False)
-        self.create_segment.setEnabled(True)
-
+            self._disble_playback_actions()
+        else:
+            self.create_segment.setEnabled(True)
+            self._enable_playback_actions()
 
     def _on_tags_changed(self):
         if self.store.selected_segment_id is None or len(self.store.tags) == 0:
@@ -138,6 +140,14 @@ class MenuBar(QMenuBar):
 
     def _on_fwd1frame(self):
         self.store.set_video_frame(self.store.video_current_frame + 1)
+
+    def _disble_playback_actions():
+        for action in self.playback_actions:
+            action.setEnabled(False)
+
+    def _enable_playback_actions():
+        for action in self.playback_actions:
+            action.setEnabled(True)
 
     def _create_file_menu(self):
         file_menu = self.addMenu(' &File')
@@ -233,6 +243,14 @@ class MenuBar(QMenuBar):
         self.fwd100.setShortcut(Registry.MENU_FORWARD_100X_KEYS)
         playback_menu.addAction(self.fwd100)
         self.fwd100.triggered.connect(self._on_fwd100x)
+
+        self.playback_actions = [self.back100, self.back10, self.back1, self.back1frame, self.fwd1frame, self.fwd1, self.fwd10, self.fwd100]
+        if not self.store.video_filename:
+            for a in self.playback_actions:
+                a.setEnabled(False)
+            # map(lambda x: x.setEnabled(False), self.playback_actions)
+
+        print(self.playback_actions[0].isEnabled())
 
     def _create_tagging_shortcuts(self, menu):
         self.add_tag1 = QAction(Registry.MENU_TAG_ONE, self)
