@@ -1,6 +1,7 @@
 import os.path
 import ntpath
 import sys
+from appdirs import AppDirs
 
 def path_leaf(path):
     head, tail = ntpath.split(path)
@@ -20,12 +21,14 @@ class Registry:
     SEGMENT_LIST_ITEM_QSS = resource_location("./src/components/segments/segment-list-item.qss")
     OPEN_IMAGE = resource_location("./src/registry/open.png")
 
+    CONFIG_FILE_LOCATION = os.path.join(AppDirs("range-tagger", "").user_data_dir, 'range-tagger.seg')
+
     OPEN_VIDEO_DIALOG_TITLE = "Open Video"
     OPEN_VIDEO_DIALOG_FILE_TYPES = "Video Files (*.mp4 *.mkv *.avi *.ts)"
     SEGMENT_MENU_HEADER_STR = "Segments"
     TAG_MENU_HEADER_STR = "Tags"
     NEW_TAG_PLACEHOLDER_STR = "Add Tag..."
-    OPEN_VIDEO_STR = "Open Video for Segmenting"
+    OPEN_VIDEO_STR = "Open Video for Tagging"
     CREATE_SEGMENT_BUTTON = "Create Segment"
     EXPORT_SEGMENTS_TITLE = "Export Segments as CSV"
     EXPORT_SEGMENTS_TYPES = "CSV (*.csv)"

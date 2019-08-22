@@ -16,6 +16,7 @@ class VideoArea(QFrame):
         self.store = store
         self.video_handler = None
         self.playback_handler = PlaybackHandler(self.store, self.video_handler)
+        self._prev_frame = None
 
         self.store.video_filename_changed.connect(self._video_filename_changed)
         self.store.video_frame_number_changed.connect(self._video_frame_number_changed)
@@ -40,13 +41,16 @@ class VideoArea(QFrame):
             self.error_message.show()
             return
 
-        self.store.set_video_loaded(True)
+        self._set_video_area_visible()
 
+        self.store.set_video_loaded(True)
+        self.store.set_total_frames(self.video_handler.get_total_frames())
+        self.store.set_video_frame(0)
+
+    def _set_video_area_visible(self):
         self.graphics_view.setVisible(True)
         self.controls.setVisible(True)
         self.button.setVisible(False)
-        self.store.set_total_frames(self.video_handler.get_total_frames())
-        self.store.set_video_frame(0)
 
     def _video_frame_number_changed(self, frame_number):
         if frame_number is None or self.video_handler is None:
@@ -54,6 +58,11 @@ class VideoArea(QFrame):
 
         frame = self.video_handler.get_frame(frame_number)
         self.graphics_scene.addItem(frame)
+
+        if self._prev_frame:
+            self.graphics_scene.removeItem(self._prev_frame)
+        self._prev_frame = frame
+
         self.graphics_view.fitInView(self.graphics_view.sceneRect(), Qt.KeepAspectRatio)
 
     def resizeEvent(self, event):

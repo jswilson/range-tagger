@@ -26,39 +26,22 @@ class VideoHandler:
         return self.current_frame_number
 
     def get_frame(self, frame_number):
-
         # libopenshot's cache isn't particularly useful for us, so we clear it
-        # out every 100 calls (otherwise, it just uses up way too mucm memory)
+        # out every 100 calls (otherwise, it just uses up way too much memory)
         self._frame_call_count += 1
         if self._frame_call_count % 100 == 0:
             self.capture.GetCache().Clear()
 
-        openshot_frame_number = frame_number + 1 # openshot is 1-indexed...yay.
-        framee = self.capture.GetFrame(openshot_frame_number)
+        frame = self.capture.GetFrame(frame_number + 1) # openshot is 1-indexed...yay.
 
-        newqimg = framee.GetImage()
+        # in order to retrieve the image from libopen shot, we actually have
+        # to base64 decode it
+        dat = base64.b64decode(frame.GetImageAsString())
+        frame.DeleteImageAsStringMemory()
+        newqimg = QImage(dat, frame.GetWidth(), frame.GetHeight(), frame.GetWidth()*4, QImage.Format_RGBA8888)
 
-        # f = openshot.UCharVector()
-        # f = framee.GetImageAsVec()
-        # width = framee.GetWidth()
-        # height = framee.GetHeight()
-        # newqimg = QImage(f, width, height, width*4, QImage.Format_RGBA8888)
-
-        dat = base64.b64decode(framee.GetImageAsString())
-        width = framee.GetWidth()
-        height = framee.GetHeight()
-        newqimg = QImage(dat, width, height, width*4, QImage.Format_RGBA8888)
-        
         self.current_frame_number = frame_number
         return self._image_to_pixmap(newqimg)
-
-    def get_frame_as_image(self, frame_number):
-        framee = self.capture.GetFrame(frame_number+1) # openshot is 1-indexed
-        dat = base64.b64decode(framee.GetImageAsString())
-        width = framee.GetWidth()
-        height = framee.GetHeight()
-        newqimg = QImage(dat, width, height, width*4, QImage.Format_RGBA8888)
-        return newqimg
 
     def _image_to_pixmap(self, qimg):
         pixmap = QGraphicsPixmapItem()

@@ -141,11 +141,11 @@ class MenuBar(QMenuBar):
     def _on_fwd1frame(self):
         self.store.set_video_frame(self.store.video_current_frame + 1)
 
-    def _disble_playback_actions():
+    def _disble_playback_actions(self):
         for action in self.playback_actions:
             action.setEnabled(False)
 
-    def _enable_playback_actions():
+    def _enable_playback_actions(self):
         for action in self.playback_actions:
             action.setEnabled(True)
 
@@ -248,9 +248,6 @@ class MenuBar(QMenuBar):
         if not self.store.video_filename:
             for a in self.playback_actions:
                 a.setEnabled(False)
-            # map(lambda x: x.setEnabled(False), self.playback_actions)
-
-        print(self.playback_actions[0].isEnabled())
 
     def _create_tagging_shortcuts(self, menu):
         self.add_tag1 = QAction(Registry.MENU_TAG_ONE, self)

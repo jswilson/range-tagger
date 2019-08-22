@@ -16,14 +16,13 @@ class VRTWindow(QMainWindow):
         QMainWindow.__init__(self)
 
         try:
-            file = open('range-tagger.seg', 'r')
+            file = open(Registry.CONFIG_FILE_LOCATION, 'r')
             self.store = Serializer.json_to_store(file.read())
         except FileNotFoundError:
             self.store = Store()
         self.invoker = CommandInvoker()
 
         self._init_ui()
-        self._init_shortcuts()
         self._init_menu()
 
     def _init_ui(self):
@@ -52,18 +51,3 @@ class VRTWindow(QMainWindow):
     def _init_menu(self):
         self.menubar = MenuBar(self.store, self.invoker)
         self.setMenuBar(self.menubar)
-
-    def _init_shortcuts(self):
-        self.saveimgs = QShortcut(QKeySequence(Qt.CTRL + Qt.SHIFT + Qt.Key_U), self)
-        self.saveimgs.activated.connect(self._on_save_images)
-
-    def _on_save_images(self):
-        starting_frame = 0
-        incr = 30
-        dest = './frames/'
-
-        curr = starting_frame
-        while curr < self.store.video_total_frames:
-            qimg = self.video_area.video_handler.get_frame_as_image(curr)
-            qimg.save(dest + str(curr) + '.jpg')
-            curr += incr
