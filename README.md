@@ -6,7 +6,7 @@ range-tagger is a Qt-based desktop application designed to help you quickly labe
 You can learn more about the motivation and design of range-tagger [here](https://www.jswilson.co/posts/release-of-range-tagger/).
 
 ## Use case
-When developing machine learning models, having properly labelled data for tranining is very important.  Let's suppose you want to build a machine learning model to automatically classify parts of a television broadcast into two classes: "commercial" or "part of the real show."  Your first step is going to be collecting a large amount of video data, but then you will need to manually label a portion of it for model training purposes.  range-tagger would let you quickly and accurately label segments of your videos as "commercials" or "show."  You would produce a CSV that looks something like this:
+When developing machine learning models, having properly labeled data for tranining is very important.  Let's suppose you want to build a machine learning model to automatically classify parts of a television broadcast into two classes: "commercial" or "part of the real show."  Your first step is going to be collecting a large amount of video data, but then you will need to manually label a portion of it for model training purposes.  range-tagger would let you quickly and accurately label segments of your videos as "commercials" or "show."  You would produce a CSV that looks something like this:
 
 | Start Frame | End Frame | Label |
 | ----- | ----------- |----------- |
@@ -24,7 +24,7 @@ range-tagger does not handle "object detection" use cases; you can use a tool li
 You can find the latest binary release [here](https://github.com/jswilson/range-tagger/releases), and you can find a demo video [here](https://youtu.be/sZvp8YXCoto).  Right now, range-tagger is only available on OSX; this is due to a single dependency.  If you would like to use range-tagger on Windows or Linux, just post an issue and I can help create a build for your platform.
 
 ### Keyboard shortcuts
-range-tagger uses keyboard shortcuts to help make your life manually labelling videos much simpler.  The shortcuts are fairly quick to learn and will help you multiply your labeling productivity:
+range-tagger uses keyboard shortcuts to help make your life manually labeling videos much simpler.  The shortcuts are fairly quick to learn and will help you multiply your labeling productivity:
 
 | Shortcut | Purpose |
 | ----- | ----------- |
