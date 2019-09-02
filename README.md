@@ -3,7 +3,7 @@ Open source application to help manually label video datasets for use in machine
 
 range-tagger is a Qt-based desktop application designed to help you quickly label sections of long videos manually.  It is designed to help you assign every frame in your video with a label so you can then use the data to train machine learning algorithms.
 
-You can learn more about the motivation and design of range-tagger [here](https://www.jswilson.co/posts/posts/release-of-range-tagger/)
+You can learn more about the motivation and design of range-tagger [here](https://www.jswilson.co/posts/posts/release-of-range-tagger/).
 
 ## Use case
 When developing machine learning models, having properly labelled data for tranining is very important.  Let's suppose you want to build a machine learning model to automatically classify parts of a television broadcast into two classes: "commercial" or "part of the real show."  Your first step is going to be collecting a large amount of video data, but then you will need to manually label a portion of it for model training purposes.  range-tagger would let you quickly and accurately label segments of your videos as "commercials" or "show."  You would produce a CSV that looks something like this:
