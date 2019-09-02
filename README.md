@@ -16,7 +16,7 @@ When developing machine learning models, having properly labelled data for trani
 | 9123 | 14565 | show
 | ... | ... | ...
 
-which you could then use to associate with frames that you feed into your model.
+which you could then link with image frames on disk that you feed into your model.
 
 range-tagger does not handle "object detection" use cases; you can use a tool like [VoTT](https://github.com/microsoft/VoTT) to handle object detection.  range-tagger took inspiration from VoTT for its design, but ultimately handles a different use case.
 
