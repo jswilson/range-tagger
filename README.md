@@ -1,7 +1,7 @@
 # range-tagger
 Open source application to help manually label video datasets for use in machine learning
 
-range-tagger is a Qt-based desktop application designed to help you quickly label sections of long videos manually.  It is designed to help you assign every frame in your video with a label so you can then use the data to train machine learning algorithms.
+range-tagger is a Qt-based desktop application designed to help you quickly label sections of long videos manually.  It is designed to help you assign every frame in your video with a label so you can then use the data to train machine learning algorithms.  range-tagger is still in alpha but is appropriate for light usage today.
 
 You can learn more about the motivation and design of range-tagger [here](https://www.jswilson.co/posts/release-of-range-tagger/).
 
