@@ -24,7 +24,7 @@ range-tagger does not handle "object detection" use cases; you can use a tool li
 You can find the latest binary release [here](https://github.com/jswilson/range-tagger/releases), and you can find a demo video [here](https://youtu.be/sZvp8YXCoto).  Right now, range-tagger is only available on OSX; this is due to a single dependency.  If you would like to use range-tagger on Windows or Linux, just post an issue and I can help create a build for your platform.
 
 ### Keyboard shortcuts
-range-tagger uses keyboard shortcuts to help make your life manually labelling videos much simpler.  The shortcuts are fairly quick to learn and will help you multiply your labelling productivity:
+range-tagger uses keyboard shortcuts to help make your life manually labelling videos much simpler.  The shortcuts are fairly quick to learn and will help you multiply your labeling productivity:
 
 | Shortcut | Purpose |
 | ----- | ----------- |
